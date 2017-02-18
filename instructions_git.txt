@@ -1,0 +1,48 @@
+——Git 安装&配置
+
+Windows下要使用很多Linux/Unix的工具时，需要Cygwin这样的模拟环境，Git也一样。Cygwin的安装和配置都比较复杂，就不建议你折腾了。不过，有高人已经把模拟环境和Git都打包好了，名叫msysgit，只需要下载一个单独的exe安装程序，其他什么也不用装，绝对好用。
+
+msysgit是Windows版的Git，从https://git-for-windows.github.io下载，然后按默认选项安装即可。
+
+安装完成后，在开始菜单里找到“Git”->“Git Bash”，蹦出一个类似命令行窗口的东西，就说明Git安装成功！
+
+安装完成后，还需要最后一步设置，在命令行输入：
+
+$ git config --global user.name "Your Name"
+$ git config --global user.email "email@example.com"
+
+因为Git是分布式版本控制系统，所以，每个机器都必须自报家门：你的名字和Email地址。你也许会担心，如果有人故意冒充别人怎么办？这个不必担心，首先我们相信大家都是善良无知的群众，其次，真的有冒充的也是有办法可查的。
+
+注意git config命令的--global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。
+
+——Git 创建版本库(repository)
+
+选择一个合适的地方，创建一个空目录：
+$ mkdir learngit
+$ cd learngit
+$ pwd
+
+通过git init命令把这个目录变成Git可以管理的仓库：
+$ git init
+Initialized empty Git repository in /Users/michael/learngit/.git/
+
+ls -ah命令就可以看见隐藏的新建的.git目录（跟踪管理版本库，勿动！）
+
+——Git 添加文件到版本库
+
+版本控制系统，只能跟踪文本文件的改动，比如TXT文件，网页，所有的程序代码等等
+Microsoft的Word格式是二进制格式，因此，版本控制系统是没法跟踪Word文件的改动的
+1.编写一个txt文件等，放到learngit目录下（子目录也行）
+2.命令git add告诉Git，把文件添加到仓库：
+$ git add *.txt
+3.命令git commit告诉Git，把文件提交到仓库：
+$ git commit -m "instructions"
+[master (root-commit) cb926e7] wrote a readme file
+ 1 file changed, 2 insertions(+)
+ create mode 100644 *.txt
+
+commit可以一次提交很多文件，所以你可以多次add不同的文件
+
+git status命令掌握工作区的状态
+
+如果git status告诉你有文件被修改过，git diff可以查看修改内容
