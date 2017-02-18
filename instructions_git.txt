@@ -46,3 +46,15 @@ commit可以一次提交很多文件，所以你可以多次add不同的文件
 git status命令掌握工作区的状态
 
 如果git status告诉你有文件被修改过，git diff可以查看修改内容
+
+git log命令显示从最近到最远的提交日志（英文状态下按Q退出）
+如果嫌输出信息太多，看得眼花缭乱的，可以试试加上--pretty=oneline参数：
+$ git log --pretty=oneline
+
+——Git 文件回退
+
+Git中，用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。
+要把当前版本回退到上一个版本，使用git reset命令：
+$ git reset --hard HEAD^
+看看*.txt的内容
+$ cat *.txt
