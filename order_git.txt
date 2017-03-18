@@ -188,3 +188,41 @@ $ git pull
 1）成功，但是合并有冲突，解决冲突后
 $ git commit -m "merge & fix hello.py"
 $ git push origin dev
+
+——Git 标签管理
+Git标签：版本库快照(容易记)，是指向某个commit的指针（但分支可移动，标签不可移动）
+____标签 创建
+$ git branch
+$ git checkout master
+1)切换到需要打标签的分支(这里设master)
+$ git tag v1.0
+1)打标签v1.0，存储在本地
+$ git tag
+1)查看所有标签(按字母顺序非时间)
+$ git log --pretty=oneline --abbrev-commit
+$ git tag v0.9 commit_id
+1)为历史某记录打标签
+$ git show v0.9
+//$ git tag -a v0.1 -m "version 0.1 released" 3628164
+1)查看标签信息
+2)-a指定标签名, -m指定说明文字
+$ git tag -s v0.2 -m "signed version 0.2 released" fec145a
+1)通过-s用私钥签名一个标签,采用PGP签名(首先安装gpg（GnuPG）)
+
+____标签 操作
+$ git tag -d v0.1
+1)本地标签的删除
+$ git push origin v1.0
+1)推送某个标签到远程
+$ git push origin --tags
+1)一次性推送全部尚未推送远程的本地标签
+$ git tag -d v0.9
+$ git push origin :refs/tags/v0.9
+1)删除远程标签
+
+——GitHub
+参与开源项目：
+1)访问它的项目主页，如：https://github.com/twbs/bootstrap
+2)点“Fork”,在自己账号下克隆了一个bootstrap仓库
+3)从自己的账号下clone：$ git clone git@github.com:xspkyw/bootstrap.git
+4)参与项目后向官方提交修改：在GitHub上发起一个pull request
